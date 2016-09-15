@@ -41,15 +41,15 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @if(Auth::check())
+                    @if($loginStatus === 1)
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-labelledby="dropdownMenu4">
-                            {{Auth::user()->name}}           <span class="caret"></span>
+                            {{$userName}}           <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{url('/profile')}}">个人资料</a>
                             </li>
-                            @if(Gate::allows('manage-posts'))
+                            @if($isUserAdmin === 1)
                                 <li><a href="{{url('/admin')}}">管理</a></li>
                             @endif
                             <li>

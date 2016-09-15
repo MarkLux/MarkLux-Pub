@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //视图composer
+        view()->composer('*','App\ViewComposer\UserComposer');
     }
 
     /**
