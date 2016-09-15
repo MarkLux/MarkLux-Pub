@@ -20,8 +20,10 @@ Route::get('/blog','BlogController@index');
 Route::get('/blog/{id}','BlogController@show');
 
 // 认证路由...
-Route::get('/login', 'Auth\AuthController@getLogin');
-Route::post('/login', 'Auth\AuthController@postLogin');
+Route::get('/login', function(){
+    return view('auth.login');
+});
+Route::post('/login', 'UserController@login');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 // 注册路由...
 Route::get('/register', 'Auth\AuthController@getRegister');

@@ -41,7 +41,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @if($loginStatus === 1)
+                    @if($loginStatus === true)
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-labelledby="dropdownMenu4">
                             {{$userName}}           <span class="caret"></span>
                         </a>

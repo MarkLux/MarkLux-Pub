@@ -2,7 +2,14 @@
 @section("content")
 <div class="container">
 <!-- resources/views/auth/login.blade.php -->
-
+    <br>
+    @if(count($errors) > 0)
+    @foreach($errors->all() as $error)
+    <div class="alert alert-warning" role="alert">
+        {{$error}}
+    </div>
+    @endforeach
+    @endif
 <form method="POST" action="{{url('/login')}}">
     {!! csrf_field() !!}
 
