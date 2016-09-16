@@ -57,7 +57,8 @@
                             </li>
                         </ul>
                     @else
-                        <a href="{{url('/login')}}">登陆</a>
+                        <a href="{{url('/login')}}">登陆</a></li>
+                        <li><a href="{{url('/register')}}">注册</a>
                     @endif
                 </li>
             </ul>

@@ -5,7 +5,7 @@
     <br>
     @if(count($errors) > 0)
     @foreach($errors->all() as $error)
-    <div class="alert alert-warning" role="alert">
+    <div class="alert alert-danger" role="alert">
         {{$error}}
     </div>
     @endforeach
@@ -28,7 +28,7 @@
     </div>
 
     <div>
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-primary">登陆</button>
     </div>
 </form>
 </div>

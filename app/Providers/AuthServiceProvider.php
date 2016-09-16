@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        //
+        //在门面里定义了一个用户授权的权限
         $gate->define('manage-posts', function ($user) {
             return $user->is_admin === 1;
         });

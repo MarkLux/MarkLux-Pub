@@ -26,8 +26,10 @@ Route::get('/login', function(){
 Route::post('/login', 'UserController@login');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 // 注册路由...
-Route::get('/register', 'Auth\AuthController@getRegister');
-Route::post('/register', 'Auth\AuthController@postRegister');
+Route::get('/register', function(){
+    return view('auth.register');
+});
+Route::post('/register', 'UserController@register');
 
 Route::get('/profile',['middleware' => 'auth',function(){
     return Auth::user();
