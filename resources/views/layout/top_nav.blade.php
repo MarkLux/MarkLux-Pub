@@ -15,25 +15,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{url("/")}}">首页
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a href="{{url("/blog")}}">博文</a>
                 </li>
-                <li class = "dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-labelledby="dropdownMenu4">
-                        博文
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="http://localhost/mark/index.php/blog/view/all">全部</a>
-                            <a href="http://localhost/mark/index.php/blog/view/分享">分享</a>
-                            <a href="http://localhost/mark/index.php/blog/view/技术">技术</a>
-                            <a href="http://localhost/mark/index.php/blog/view/未分类">未分类</a>
-                            <a href="http://localhost/mark/index.php/blog/view/生活">生活</a>
-                        </li>
-                    </ul>
-
                 <li>
                     <a href="#">Pub</a>
                 </li>

@@ -1,23 +1,38 @@
 @extends('layout.app')
 @section('content')
+    <br>
 <div class="container">
 
     <div class="row">
 
         <div class="col-md-6" id="add_new_form" >
 
+            @if(count($errors) > 0)
+            @foreach($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        {{$error}}
+                    </div>
+            @endforeach
+            @endif
+
+            @if(!empty($update))
+                    <div class="alert alert-success" role="alert">
+                        操作成功
+                    </div>
+            @endif
 
             <h1>添加文章</h1>
 
 
-            <form action="{{url('/admin/add_new')}}" method="POST">
-
+            <form action="{{url('/admin/add-new')}}" method="POST">
+                {!! csrf_field() !!}
+                {{--没有csrf域post会被deny，然后直接返回500--}}
             <h3>标题</h3>
-            <input class="form-control" type="text" name="blog_title" size="20" value="<?php old('blog_title'); ?>"/>
-            <input type="hidden" name="blog_create_time" value="<?php echo date("Y-m-d h:i");?>">
+            <input class="form-control" type="text" name="title" size="20" value="<?php old('blog_title'); ?>"/>
             <br>
-            <h3>文本内容</h3>
-            <textarea  class="form-control" rows="5" name="blog_content" id="text_editor" oninput="update()"><?php old('blog_content') ?></textarea>
+            <h3>内容</h3>
+                {{--下面这个textarea如果不写在一行里就会导致输入框自带一堆烦人的空格--}}
+            <textarea  class="form-control" rows="10" name="postContent" id="text_editor" oninput="update()"><?php old('postContent'); ?></textarea>
             <br>
             <button type="submit" class="btn btn-default">提交</button>
 
@@ -27,7 +42,7 @@
 
             <h3>实时预览</h3>
             <div id="preview">
-
+                随便写点什么就可以查看预览了哦...
             </div>
 
         </div>

@@ -19,6 +19,6 @@ class AdminMiddleware
         if(Gate::allows('manage-posts'))
             return $next($request);
         else
-            return redirect('/login');
+            return view('errors.503');
     }
 }

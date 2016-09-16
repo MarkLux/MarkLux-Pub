@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug')->unique();
+            $table->string('slug');//这个感觉实在没啥用，我后来把unique给去掉了，但是还没有drop这一字段
             $table->string('title');
             $table->text('content');
             $table->timestamps();

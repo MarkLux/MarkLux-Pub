@@ -11,19 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/blog');
-});
+Route::get('/', 'BlogController@index');
 
-Route::get('/blog','BlogController@index');
+Route::get('/blog','BlogController@showAll');
 
-Route::get('/blog/{id}','BlogController@show');
+Route::get('/blog/{id}','BlogController@showSingle');
 
 // 认证路由...
 Route::get('/login', function(){
     return view('auth.login');
 });
 Route::post('/login', 'UserController@login');
+
 Route::get('/logout', 'Auth\AuthController@getLogout');
 // 注册路由...
 Route::get('/register', function(){
@@ -35,11 +34,17 @@ Route::get('/profile',['middleware' => 'auth',function(){
     return Auth::user();
 }]);
 
-Route::group(['middleware' => 'admin'],function(){
-    Route::get('/admin',function(){
+Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
+    Route::get('/',function(){
         return view('admin.panel');
     });
-    Route::get('/admin/add-new',function(){
+    Route::get('/add-new',function(){
         return view('admin.add_new');
     });
+    Route::post('/add-new','BlogController@addNew');
+    Route::get('/update/{id}','BlogController@getUpdate');
+    Route::post('/update/{id}','BlogController@postUpdate');
+    Route::get('/delete/{id}','BlogController@deletePost');
+    Route::get('/list','AdminController@showList');
 });
+
