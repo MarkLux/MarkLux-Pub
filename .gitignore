@@ -4,3 +4,8 @@ Homestead.yaml
 Homestead.json
 .env
 .env.example
+/.idea
+/storage
+/tests
+/config
+/bootstrap
