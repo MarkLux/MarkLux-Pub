@@ -7,7 +7,8 @@
     </div>
 
 
-        <a  class="btn btn-primary btn-lg" href="{{url('admin/add-new')}}">新建文章</a>
-        <a class="btn btn-primary btn-lg" href="{{url('admin/list')}}">管理文章</a>
+        <a  class="btn btn-primary btn-lg" href="{{url('admin/posts/add-new')}}">新建文章</a>
+        <a class="btn btn-primary btn-lg" href="{{url('admin/posts')}}">管理文章</a>
+        <a class="btn btn-primary btn-lg" href="{{url('admin/categories')}}">管理分类</a>
     </div>
 @endsection

@@ -15,6 +15,8 @@ Route::get('/', 'BlogController@index');
 
 Route::get('/blog','BlogController@showAll');
 
+Route::get('/blog/category/{id}','BlogController@showByCategory');
+
 Route::get('/blog/{id}','BlogController@showSingle');
 
 // 认证路由...
@@ -38,13 +40,16 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
     Route::get('/',function(){
         return view('admin.panel');
     });
-    Route::get('/add-new',function(){
-        return view('admin.add_new');
-    });
-    Route::post('/add-new','BlogController@addNew');
-    Route::get('/update/{id}','BlogController@getUpdate');
-    Route::post('/update/{id}','BlogController@postUpdate');
-    Route::get('/delete/{id}','BlogController@deletePost');
-    Route::get('/list','AdminController@showList');
+    Route::get('/posts/add-new','AdminController@showAddPost');
+    Route::post('/posts/add-new','BlogController@AddNew');
+    Route::get('/posts/update/{id}','AdminController@showUpdatePost');
+    Route::post('/posts/update/{id}','BlogController@postUpdate');
+    Route::get('/posts/delete/{id}','BlogController@deletePost');
+    Route::get('/posts','AdminController@showPostList');
+
+    Route::get('/categories','CategoryController@index');
+    Route::post('/categories','CategoryController@addNew');
+    Route::delete('/categories/{id}','CategoryController@del');
+    Route::post('/categories/{id}','CategoryController@update');
 });
 

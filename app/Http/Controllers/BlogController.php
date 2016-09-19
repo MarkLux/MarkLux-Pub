@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,10 +23,32 @@ class BlogController extends Controller
 
     public function showAll()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::orderBy('updated_at','desc')->paginate(10);
         //查询构造器的分页方法，返回了一个分页类对象，内置了方便的方法，好用到飞起
 
-        return view('blog.all',['posts' => $posts]);
+        return view('blog.list',[
+            'posts' => $posts,
+            'categoryName' => '全部'
+        ]);
+    }
+
+    public function showByCategory($cid)
+    {
+        //先检查cid的合理性
+        try{
+            $category = Category::findOrFail($cid);
+        }catch (ModelNotFoundException $e) {
+//            return view("errors.404");
+
+            echo $cid;
+        }
+
+        $posts = Post::where('cid','=',$cid)->orderBy('updated_at','desc')->paginate(10);
+
+        return view('blog.list',[
+            'posts' => $posts,
+            'categoryName' => $category->name
+        ]);
     }
 
     public function showSingle($id)
@@ -63,23 +86,11 @@ class BlogController extends Controller
 
         $post->title = $request->title;
         $post->content = $request->postContent;
+        $post->cid = $request->cid;
 
         $post->save();
 
-        return view('admin.add_new',['update' => 1]);
-    }
-
-    public function getUpdate($id)
-    {
-        try{
-            $post =  Post::findOrFail($id);
-        }catch (ModelNotFoundException $e) {
-            return view("errors.404");
-        }
-
-        return view("admin.update",[
-            'post' => $post
-        ]);
+        return redirect('/admin/posts/add-new?update=1');
     }
 
     public function postUpdate(Request $request,$id)
@@ -108,10 +119,7 @@ class BlogController extends Controller
 
         $post->save();
 
-        return view('admin.update',[
-            'update' => 1,
-            'post' => $post
-        ]);
+        return redirect('admin/posts/update/'.$id."?update=1");
     }
 
     public function deletePost($id)

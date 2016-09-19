@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsAdminToUsersTable extends Migration
+class AddCidToPost extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class AddIsAdminToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             //
-            $table->tinyInteger('is_admin')->default(0);
+            $table->integer('cid')->default(1);
         });
     }
 
@@ -25,9 +25,9 @@ class AddIsAdminToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             //
-            $table->dropColumn('is_admin');
+            $table->dropColumn('cid');
         });
     }
 }

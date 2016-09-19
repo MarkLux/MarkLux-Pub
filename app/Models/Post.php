@@ -21,4 +21,6 @@ class Post extends Model
             //辅助函数，Helper里面其实就是是调用了Str::slug()；
         }
     }
+
+    //其实这个函数没啥用..后面也取消了slug设定，改用post的id来查询
 }

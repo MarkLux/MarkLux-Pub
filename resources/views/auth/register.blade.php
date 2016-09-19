@@ -3,14 +3,7 @@
 @section("content")
     <br>
 <div class="container" id="validator">
-     @if(count($errors) > 0)
-         {{--这里一定要用all()方法来拿出数组，注意看源码是怎么封装的--}}
-         @foreach($errors->all() as $error)
-            <div class="alert alert-danger" role="alert">
-                {{$error}}
-            </div>
-         @endforeach
-     @endif
+     @include('errors.form_validation')
 </div>
 
 <div class="container" id="register_form">
