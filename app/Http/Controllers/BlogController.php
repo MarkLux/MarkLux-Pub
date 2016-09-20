@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Comment;
 use League\CommonMark\CommonMarkConverter;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -51,7 +53,7 @@ class BlogController extends Controller
         ]);
     }
 
-    public function showSingle($id)
+    public function showSingle(Request $request,$id)
     {
         //用了composer的autoload，虽然讲道理在框架里应该是用sp绑定一下比较合理
         $parser = new CommonMarkConverter(['html_input' => 'escape']);
@@ -63,9 +65,16 @@ class BlogController extends Controller
             return view("errors.404");
         }
 
+        $comments = Comment::where('pid','=',$id)->get();
+
+        $update = $request->input('update',0);
+
+
         return view('blog.single',[
             'post' => $post,
-            'content' => $parser->convertToHtml($post->content)
+            'content' => $parser->convertToHtml($post->content),
+            'comments' => $comments,
+            'update' => $update
         ]);
     }
 
@@ -134,4 +143,37 @@ class BlogController extends Controller
 
         return view('admin.deleted');
     }
+
+    public function addComment(Request $request,$id)
+    {
+        try{
+            $post = Post::findOrFail($id);
+        }catch (ModelNotFoundException $e){
+            return view("errors.503");
+        }
+
+        $rules = [
+            'comment' => 'required|max:1024'
+        ];
+
+        $message = [
+            'required' => '内容不能为空',
+            'max' => '长度过长！'
+        ];
+
+        $user = Auth::user();
+
+        $this->validate($request,$rules,$message);
+
+        $comment = new Comment;
+
+        $comment->content = $request->comment;
+        $comment->pid = $id;
+        $comment->uid = $user->id;
+
+        $comment->save();
+
+        return redirect('/blog/'.$id.'?update=1');
+    }
+
 }

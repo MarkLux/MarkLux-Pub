@@ -15,6 +15,7 @@
         <div id="content">
             {!! $content !!}
         </div>
-
+        <hr>
+        @include('blog.comments')
     </div>
 @endsection

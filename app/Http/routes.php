@@ -32,9 +32,13 @@ Route::get('/register', function(){
 });
 Route::post('/register', 'UserController@register');
 
-Route::get('/profile',['middleware' => 'auth',function(){
-    return Auth::user();
-}]);
+Route::group(['middleware' => 'auth'],function (){
+    Route::get('/profile',function(){
+        return Auth::user();
+    });
+
+    Route::post('/blog/{id}','BlogController@addComment');
+});
 
 Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
     Route::get('/',function(){
