@@ -12,6 +12,8 @@ namespace App\ViewComposer;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Auth;//facade
+use App\Models\Category;
+
 
 class UserComposer
 {
@@ -29,5 +31,10 @@ class UserComposer
         {
             $view->with('loginStatus',0);
         }
+
+        //顺便把分类也给绑定一下吧。。
+        $categories = Category::orderBy('id')->get();
+
+        $view->with('all_categories',$categories);
     }
 }

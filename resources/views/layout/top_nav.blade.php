@@ -9,16 +9,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{url("/")}}">MarkLux</a>
+            <a class="navbar-brand" href="{{url("/")}}">MarkLux's Pub</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="{{url("/blog")}}">博文</a>
-                </li>
-                <li>
-                    <a href="#">Pub</a>
+                <li class = "dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-labelledby="dropdownMenu4">
+                        博文
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{url('blog')}}">全部</a></li>
+                        @foreach($all_categories as $category)
+                            <li><a href="{{url('blog/category/'.$category->id)}}">{{$category->name}}</a></li>
+                        @endforeach
+                    </ul>
                 </li>
             </ul>
 

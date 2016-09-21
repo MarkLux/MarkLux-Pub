@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
@@ -20,6 +21,22 @@ class AdminController extends  Controller
         $posts = Post::paginate(10);
 
         return view('admin.post_list',['posts' => $posts]);
+    }
+
+    public function showPostListByCid($cid)
+    {
+        try{
+            $category = Category::findOrFail($cid);
+        }catch (ModelNotFoundException $e) {
+            return view('errors.404');
+        }
+
+        $posts = Post::where('cid','=',$cid)->paginate(10);
+
+        return view('admin.post_list',[
+            'posts' => $posts,
+            'categoryName' => $category->name
+        ]);
     }
 
     public function showAddPost(Request $request)

@@ -51,6 +51,7 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
     Route::get('/posts/update/{id}','AdminController@showUpdatePost');
     Route::post('/posts/update/{id}','BlogController@postUpdate');
     Route::get('/posts/delete/{id}','BlogController@deletePost');
+    Route::get('/posts/category/{cid}','AdminController@showPostListByCid');
     Route::get('/posts','AdminController@showPostList');
 
     Route::get('/categories','CategoryController@index');
