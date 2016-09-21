@@ -15,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //注册视图composer
-        view()->composer(['layout.top_nav','blog.single','admin.post_list'],'App\ViewComposer\UserComposer');
+        view()->composer([
+            'layout.top_nav','blog.single','admin.post_list','profile'
+        ],'App\ViewComposer\UserComposer');
     }
 
     /**

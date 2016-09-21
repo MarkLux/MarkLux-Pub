@@ -14,7 +14,7 @@
                 分类： <a href="{{url("/blog/category/".$post->cid)}}">{{$getter->getCategoryNameByCid($post->cid)}}</a>
             </p>
             <p>
-                {{$post->content}}
+                {{$getter->cutArticle($post->content,150)}}
             </p>
             <hr>
         @endforeach

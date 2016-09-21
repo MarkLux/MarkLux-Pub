@@ -1,0 +1,22 @@
+body,
+html {
+  color: #505050;
+  line-height: 1.75em;
+  position: relative;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+}
+
+/**/
+
+/*header*/
+.header-bg {
+  background-image: url("http://i1.buimg.com/567571/8f07769970df8d1b.png");
+  background-repeat: no-repeat;
+  background-position: center 20%;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+
+}

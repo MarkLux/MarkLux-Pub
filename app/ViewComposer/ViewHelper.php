@@ -11,6 +11,7 @@ namespace App\ViewComposer;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\User;
+use League\CommonMark\CommonMarkConverter;
 
 /*
  *请注意 这不是一个视图组件，而是提供给视图的一个服务类，
@@ -41,5 +42,22 @@ class ViewHelper
         }
 
         return $user;
+    }
+
+    //生成文章摘要
+    public function cutArticle($data,$cut=0,$str="....")
+    {
+        $parser = new CommonMarkConverter(['html_input' => 'escape']);
+
+        $data = $parser->convertToHtml($data);
+
+        $data=strip_tags($data);//去除html标记
+        $pattern = "/&[a-zA-Z]+;/";//去除特殊符号
+        $data=preg_replace($pattern,'',$data);
+        if(!is_numeric($cut))
+            return $data;
+        if($cut>0)
+            $data=mb_strimwidth($data,0,$cut,$str);
+        return $data;
     }
 }

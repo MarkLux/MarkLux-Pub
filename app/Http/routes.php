@@ -34,7 +34,7 @@ Route::post('/register', 'UserController@register');
 
 Route::group(['middleware' => 'auth'],function (){
     Route::get('/profile',function(){
-        return Auth::user();
+        return view('profile');
     });
 
     Route::post('/blog/{id}','BlogController@addComment');
