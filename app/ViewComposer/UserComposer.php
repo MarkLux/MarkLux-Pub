@@ -23,9 +23,7 @@ class UserComposer
         {
             $user = Auth::user();
             $view->with('loginStatus',Auth::check());
-            $view->with('isUserAdmin',$user->is_admin);
-            $view->with('userId',$user->id);
-            $view->with('userName',$user->name);
+            $view->with('user',$user);
         }
         else
         {

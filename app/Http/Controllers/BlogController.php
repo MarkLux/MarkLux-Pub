@@ -10,6 +10,8 @@ use App\Models\Post;
 use App\Models\Comment;
 use League\CommonMark\CommonMarkConverter;
 use Auth;
+use Gate;
+use Prophecy\Exception\Prediction\NoCallsException;
 
 class BlogController extends Controller
 {
@@ -176,4 +178,19 @@ class BlogController extends Controller
         return redirect('/blog/'.$id.'?update=1');
     }
 
+    public function deleteComment(Request $request,$id)
+    {
+        try{
+            $comment = Comment::findOrFail($id);
+        }catch (ModelNotFoundException $e){
+            return view("errors.404");
+        }
+
+        if(Gate::denies('delete-comment',$comment))
+            return view('errors.503');
+
+        $comment->delete();
+
+        return redirect('/blog/'.$request->bid.'?update=1');
+    }
 }

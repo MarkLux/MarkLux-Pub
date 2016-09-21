@@ -1,6 +1,6 @@
 @extends("layout.app")
 
-@inject('getter','App\ViewComposer\CategoryComposer')
+@inject('getter','App\ViewComposer\ViewHelper')
 
 @section("content")
     <div class="container">

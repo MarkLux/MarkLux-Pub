@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'],function (){
     });
 
     Route::post('/blog/{id}','BlogController@addComment');
+
+    Route::post('blog/delete-comment/{id}','BlogController@deleteComment');
 });
 
 Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
