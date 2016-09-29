@@ -127,6 +127,7 @@ class BlogController extends Controller
 
         $post->title = $request->title;
         $post->content = $request->postContent;
+        $post->cid = $request->cid;
 
         $post->save();
 
