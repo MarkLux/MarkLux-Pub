@@ -45,7 +45,7 @@ class PowerBuilderFormController extends Controller
         ]);
 
         if ($validator->fails()) {
-            throw new FormValidationException($validator->getMessage()->all());
+            throw new FormValidationException($validator->getMessageBag()->all());
         }
 
         $old = PowerBuilderForm::where('mobile',$request->input('mobile'))->get()->first();
@@ -95,7 +95,7 @@ class PowerBuilderFormController extends Controller
         ]);
 
         if ($validator->fails()) {
-            throw new FormValidationException($validator->getMessage()->all());
+            throw new FormValidationException($validator->getMessageBag()->all());
         }
 
         $password = $request->input('password');
