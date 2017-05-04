@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Request;
 
 class EnableCrossRequestMiddleware
 {

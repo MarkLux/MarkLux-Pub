@@ -62,5 +62,8 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
     Route::post('/categories/{id}','CategoryController@update');
 });
 
-Route::post('/power-builder/submit','PowerBuilderFormController@submit');
+Route::post('/power-builder/submit',[
+    'middleware' => 'cors',
+    'uses' => 'PowerBuilderFormController@submit'
+]);
 Route::post('/power-builder/result','PowerBuilderFormController@getResult');

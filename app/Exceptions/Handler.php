@@ -25,7 +25,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param  \Exception $e
      * @return void
      */
     public function report(Exception $e)
@@ -36,8 +36,8 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
@@ -47,10 +47,21 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof BaseException) {
-            return response()->json([
-                'code' => $e->getCode(),
-                'data' => $e->getData()
-            ]);
+
+            header('Access-Control-Allow-Headers:Origin, Content-Type, Cookie, Accept,token,Accept,X-Requested-With');
+            header('Access-Control-Allow-Origin:*');
+            header('Access-Control-Allow-Methods:GET, POST, PATCH, PUT, OPTIONS');
+            header('Access-Control-Allow-Credentials:true');
+
+            return response()
+//                ->header()
+//                ->header('Access-Control-Allow-Headers', 'Origin, Content-Type, Cookie, Accept,token,Accept,X-Requested-With')
+//                ->header()
+//                ->header()
+                ->json([
+                    'code' => $e->getCode(),
+                    'data' => $e->getData()
+                ]);
         }
 
         return parent::render($request, $e);

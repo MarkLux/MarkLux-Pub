@@ -38,13 +38,14 @@ class PowerBuilderFormController extends Controller
             'need_room' => 'required|boolean',
             'room_type' => 'string|max:100',
             'days' => 'integer',
-            'self_lunch_count' => 'integer',
+            'self_lunch_count' => 'required|integer',
             'need_receipt' => 'required|boolean',
-            'receipt_header' => 'string'
+            'receipt_header' => 'string',
+            'total_price' => 'required|integer'
         ]);
 
         if ($validator->fails()) {
-            throw new FormValidationException($validator->getMessageBag()->all());
+            throw new FormValidationException($validator->getMessage()->all());
         }
 
         $old = PowerBuilderForm::where('mobile',$request->input('mobile'))->get()->first();
@@ -71,16 +72,18 @@ class PowerBuilderFormController extends Controller
             'self_lunch_count' => $request->input('self_lunch_count'),
             'need_receipt' => $request->input('need_receipt'),
             'receipt_header' => $request->input('receipt_header'),
+            'total_price' => $request->input('total_price'),
             'created_at' => new Carbon()
         ];
 
         $row = DB::table('power_builder_forms')->insert($new);
 
         if ($row != 1) {
-            throw new InnerErrorException('报名失败！');
+            throw new InnerErrorException('无法提交！');
         }
 
-        return response()->json([
+        return response()
+            ->json([
             'code' => 0
         ]);
     }
@@ -92,7 +95,7 @@ class PowerBuilderFormController extends Controller
         ]);
 
         if ($validator->fails()) {
-            throw new FormValidationException($validator->getMessageBag()->all());
+            throw new FormValidationException($validator->getMessage()->all());
         }
 
         $password = $request->input('password');
@@ -128,7 +131,8 @@ class PowerBuilderFormController extends Controller
             ->setCellValue('O1','午餐自助餐数量')
             ->setCellValue('P1','是否需要发票')
             ->setCellValue('Q1','发票单位抬头')
-            ->setCellValue('R1','报名时间');
+            ->setCellValue('R1','报名时间')
+            ->setCellValue('S1','总金额');
 
         // 设置单元格内容
 
@@ -154,7 +158,8 @@ class PowerBuilderFormController extends Controller
                 ->setCellValue('O'.$i,$single->self_lunch_count)
                 ->setCellValue('P'.$i,$single->need_receipt?"是":"否")
                 ->setCellValue('Q'.$i,$single->receipt_header)
-                ->setCellValue('R'.$i,$single->created_at);
+                ->setCellValue('R'.$i,$single->created_at)
+                ->setCellValue('S'.$i,$single->total_price);
         }
 
         $phpExcelObj->getActiveSheet()->setTitle('报名结果');
