@@ -66,4 +66,4 @@ Route::post('/power-builder/submit',[
     'middleware' => 'cors',
     'uses' => 'PowerBuilderFormController@submit'
 ]);
-Route::post('/power-builder/result','PowerBuilderFormController@getResult');
+Route::get('/power-builder/result','PowerBuilderFormController@getResult');
