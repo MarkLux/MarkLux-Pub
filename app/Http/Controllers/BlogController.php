@@ -27,6 +27,7 @@ class BlogController extends Controller
 
     public function showAll()
     {
+		
         $posts = Post::orderBy('updated_at','desc')->paginate(10);
         //查询构造器的分页方法，返回了一个分页类对象，内置了方便的方法，好用到飞起
 
@@ -42,9 +43,8 @@ class BlogController extends Controller
         try{
             $category = Category::findOrFail($cid);
         }catch (ModelNotFoundException $e) {
-//            return view("errors.404");
-
-            echo $cid;
+            return view("errors.404");
+       
         }
 
         $posts = Post::where('cid','=',$cid)->orderBy('updated_at','desc')->paginate(10);
@@ -127,7 +127,7 @@ class BlogController extends Controller
 
         $post->title = $request->title;
         $post->content = $request->postContent;
-        $post->cid = $request->cid;
+	$post->cid = $request->cid;
 
         $post->save();
 

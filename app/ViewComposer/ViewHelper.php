@@ -47,6 +47,7 @@ class ViewHelper
     //生成文章摘要
     public function cutArticle($data,$cut=0,$str="....")
     {
+	
         $parser = new CommonMarkConverter(['html_input' => 'escape']);
 
         $data = $parser->convertToHtml($data);
@@ -59,5 +60,6 @@ class ViewHelper
         if($cut>0)
             $data=mb_strimwidth($data,0,$cut,$str);
         return $data;
+	
     }
 }

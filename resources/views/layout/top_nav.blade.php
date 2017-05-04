@@ -26,6 +26,7 @@
                         @endforeach
                     </ul>
                 </li>
+		<li><a href="{{url('calendar')}}">黄历</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

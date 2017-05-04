@@ -28,9 +28,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //注册一个想在视图中注入的服务,结果发现不注册也能用
-
-//        $this->app->singleton('App\ViewComposer\CategoryComposer',function($app){
-//            return new CategoryComposer();
-//        });
+	/*
+        $this->app->singleton('App\ViewComposer\ViewHelper',function($app){
+            return new ViewHelper();
+        });
+	*/
     }
 }

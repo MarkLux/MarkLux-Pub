@@ -13,6 +13,8 @@
 
 Route::get('/', 'BlogController@index');
 
+Route::get('/calendar','HLController@index');
+
 Route::get('/blog','BlogController@showAll');
 
 Route::get('/blog/category/{id}','BlogController@showByCategory');
