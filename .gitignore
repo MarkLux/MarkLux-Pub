@@ -5,8 +5,4 @@ Homestead.json
 .env
 .env.example
 /.idea
-/storage
-/tests
-/config
-/bootstrap
 /.DS_Store
