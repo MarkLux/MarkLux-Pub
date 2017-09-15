@@ -22,7 +22,7 @@
 
     @include("layout.top_nav")
 
-    <div  style="height:51px">
+    <div  style="height:60px">
     </div>
     @yield('content')
     <!--footer-->

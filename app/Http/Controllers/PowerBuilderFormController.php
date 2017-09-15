@@ -174,4 +174,9 @@ class PowerBuilderFormController extends Controller
 
         $objWriter->save('php://output');
     }
+
+    public function getRecordByMoblie(Request $request)
+    {
+    }
+
 }
