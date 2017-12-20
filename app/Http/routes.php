@@ -13,6 +13,8 @@
 
 Route::get('/', 'BlogController@index');
 
+Route::get('/friend-links','BlogController@getFriendLinks');
+
 Route::get('/calendar','HLController@index');
 
 Route::get('/blog','BlogController@showAll');

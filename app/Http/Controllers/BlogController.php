@@ -25,6 +25,11 @@ class BlogController extends Controller
         ]);
     }
 
+    public function getFriendLinks()
+    {
+        return view('friend_link');
+    }
+
     public function showAll()
     {
 		
