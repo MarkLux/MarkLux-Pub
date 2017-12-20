@@ -34,7 +34,7 @@ class PowerBuilderFormController extends Controller
             'city' => 'required|string|max:100',
             'company' => 'required|string|max:100',
             'duty' => 'required|string|max:100',
-            'arrival_time' => 'required|date|after:now',
+            'arrival_time' => 'required|date',
             'need_room' => 'required|boolean',
             'room_type' => 'string|max:100',
             'days' => 'integer',

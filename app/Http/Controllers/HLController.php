@@ -51,11 +51,11 @@ class HLController extends Controller
         ["name"=>"使用steam", "good"=>"今天会玩的很开心","bad"=>"除非你想剁手", "weekend"=> true]
     ];
 
-    private $tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows8", "Linux", "MacOS", "IE", "Android设备", "iOS设备"];
+    private $tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows10", "Linux", "MacOS", "IE", "Android设备", "iOS设备"];
 
     private $drinks = ["水","茶","红茶","绿茶","咖啡","奶茶","可乐","鲜奶","豆奶","果汁","果味汽水","苏打水","运动饮料","酸奶","酒"];
 
-    private $foods = ["拔丝蛋糕","鸡排饭","拉面","蛋包饭","炒饭","汉堡","煎饼","东北菜馆"];
+    private $foods = ["拔丝蛋糕","张姐烤肉饭","玉米","拉面","蛋包饭","炒饭","汉堡","煎饼","东北菜馆"];
 
     //日期变量
     private $today;
