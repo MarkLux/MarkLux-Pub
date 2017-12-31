@@ -31,7 +31,7 @@
         <div class="row footer-bottom">
             <ul class="list-inline text-center">
                 <li>
-                    &copy;2017
+                    &copy;2018
                 </li>
                 <li>
                     MarkLux
