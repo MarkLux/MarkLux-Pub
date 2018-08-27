@@ -3,6 +3,7 @@
     <div class="container" id="friend_links">
     <h3>酒馆常客</h3>
     <ul>
+        <li><a href="http://ajiajia.club">Ajiajia</a></li>
         <li><a href="http://helloyz.cn/">Molybdenumyz</a></li>
         <li><a href="http://ihotown.cn/">Hotown</a></li>
         <li><a href="http://outxu.cn">Out Xu</a></li>
@@ -11,13 +12,13 @@
     </ul>
     <h3>关于我</h3>
     <p>
-        非典型码农。大三CS挣扎期。
+        一个非常奇怪的人
         <br>
-        啥都干不好但却怀着啥都想干的好奇心和热情orz
+        莫种意义上啥都干不好但却总是怀着啥都想干的好奇心和热情
         <br>
-        自我定位不是程序员，是一个兴趣使然的创作爱好者
+        写代码只是为了感受创造的快感，真的
         <br>
-        作品集 -> <a href="https://github.com/MarkLux">github</a>
+        写了一些乱七八糟的东西 -> <a href="https://github.com/MarkLux">github</a>
     </p>
     </div>
 @endsection
