@@ -16,9 +16,7 @@
         <br>
         莫种意义上啥都干不好但却总是怀着啥都想干的好奇心和热情
         <br>
-        写代码只是为了感受创造的快感，真的
-        <br>
-        写了一些乱七八糟的东西 -> <a href="https://github.com/MarkLux">github</a>
+        写了一些奇奇怪怪的东西 -> <a href="https://github.com/MarkLux">github</a>
     </p>
     </div>
 @endsection
