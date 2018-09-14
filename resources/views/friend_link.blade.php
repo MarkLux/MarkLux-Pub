@@ -7,7 +7,7 @@
         <li><a href="http://helloyz.cn/">Molybdenumyz</a></li>
         <li><a href="http://ihotown.cn/">Hotown</a></li>
         <li><a href="http://outxu.cn">Out Xu</a></li>
-        <li><a href="http://mypub.sealbaby.cn/">MariaSeal</a></li>
+        <li><a href="http://sealbaby.cn/">MariaSeal</a></li>
         <li><a href="http://catango.cn/">Catango</a></li>
     </ul>
     <h3>关于我</h3>

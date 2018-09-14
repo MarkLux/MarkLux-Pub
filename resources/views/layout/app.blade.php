@@ -16,7 +16,11 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{url("/")}}/js/Parser.js"></script>
-    <title>Test</title>
+    <style>
+	img {
+	    max-width: 80vw;
+	}
+    </style>
 </head>
 <body>
 

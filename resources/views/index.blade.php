@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="logotxt"><h1><a href="http://marklux.cn">Mark Lux's Pub</a></h1></div>
-                    <h2 class="site-name text-center">无风叶落<span></span></h2>
+                    <h2 class="site-name text-center">做个有趣儿的人<span></span></h2>
                 </div>
             </div>
 
