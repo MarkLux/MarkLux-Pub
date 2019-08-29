@@ -21,6 +21,8 @@ Route::get('/blog','BlogController@showAll');
 
 Route::get('/blog/category/{id}','BlogController@showByCategory');
 
+Route::get('/blog/raw/{id}', 'BlogController@showRawMd');
+
 Route::get('/blog/{id}','BlogController@showSingle');
 
 // 认证路由...
@@ -69,3 +71,21 @@ Route::post('/power-builder/submit',[
     'uses' => 'PowerBuilderFormController@submit'
 ]);
 Route::get('/power-builder/result','PowerBuilderFormController@getResult');
+
+Route::options('/cors/test', function (\Illuminate\Http\Request $request) {
+    return response()->json(['status' => 'options'], 200, [
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Headers' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PATCH,DELETE,PUT, OPTIONS',
+//        'Access-Control-Allow-Credentials' => 'true'
+    ]);
+});
+
+Route::post('/cors/test',function (\Illuminate\Http\Request $request) {
+    return response()->json(['status' => 'post'], 200, [
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Headers' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PATCH,DELETE,PUT, OPTIONS',
+//        'Access-Control-Allow-Credentials' => 'true'
+    ]);
+});

@@ -85,6 +85,17 @@ class BlogController extends Controller
         ]);
     }
 
+
+    public function showRawMd(Request $request, $id) {
+        try {
+            $post = Post::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return "";
+        }
+	
+	return $post->content;   
+    }
+
     public function addNew(Request $request)
     {
         $rules = [

@@ -20,6 +20,11 @@
 	img {
 	    max-width: 80vw;
 	}
+        @media  screen and (max-width: 768px) {
+                img {
+                    max-width: 92vw;
+                }
+        }
     </style>
 </head>
 <body>
@@ -35,10 +40,15 @@
         <div class="row footer-bottom">
             <ul class="list-inline text-center">
                 <li>
-                    &copy;2018
+                    &copy;2019
                 </li>
                 <li>
                     MarkLux
+                </li>
+            </ul>
+	    <ul class="list-inline text-center">
+                <li>
+                    冀ICP备17019200号-1
                 </li>
             </ul>
         </div>
