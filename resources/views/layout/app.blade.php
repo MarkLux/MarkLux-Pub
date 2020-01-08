@@ -40,7 +40,7 @@
         <div class="row footer-bottom">
             <ul class="list-inline text-center">
                 <li>
-                    &copy;2019
+                    &copy;2020
                 </li>
                 <li>
                     MarkLux
