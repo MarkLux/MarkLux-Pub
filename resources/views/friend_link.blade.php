@@ -3,7 +3,6 @@
     <div class="container" id="friend_links">
     <h3>酒馆常客</h3>
     <ul>
-        <li><a href="http://ajiajia.club">Ajiajia</a></li>
         <li><a href="http://helloyz.cn/">Molybdenumyz</a></li>
         <li><a href="http://ihotown.cn/">Hotown</a></li>
         <li><a href="http://outxu.cn">Out Xu</a></li>
